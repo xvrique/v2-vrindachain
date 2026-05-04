@@ -6,33 +6,6 @@ export default function FeatureSection() {
 
   return (
     <section className="relative py-32 px-4 bg-transparent overflow-hidden stink-haze">
-      {/* Floating particles specific to this section */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-2xl"
-            initial={{ 
-              x: Math.random() * 100 + '%', 
-              y: '110%', 
-              opacity: 0 
-            }}
-            animate={{ 
-              y: '-10%', 
-              opacity: [0, 1, 1, 0],
-              rotate: 360
-            }}
-            transition={{ 
-              duration: 5 + Math.random() * 5, 
-              repeat: Infinity, 
-              delay: Math.random() * 5 
-            }}
-          >
-            {['🪷', '✨', '💨', '🐄'][Math.floor(Math.random() * 4)]}
-          </motion.div>
-        ))}
-      </div>
-
       <div className="max-w-4xl mx-auto text-center relative z-20">
         {/* Main Feature Card */}
         <motion.div

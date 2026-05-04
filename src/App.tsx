@@ -4,10 +4,8 @@ import Hero from './components/Hero'
 import FeatureSection from './components/FeatureSection'
 import HowToBuy from './components/HowToBuy'
 import About from './components/About'
-import BackedBy from './components/BackedBy'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
-import ParticleBackground from './components/ParticleBackground'
 import KonamiCode from './components/KonamiCode'
 import CursorTrail from './components/CursorTrail'
 import InteractiveCow from './components/InteractiveCow'
@@ -30,7 +28,6 @@ function App() {
   return (
     <div className="relative w-full min-h-screen">
       <BackgroundVideo />
-      <ParticleBackground />
       
       {/* Interactive Elements */}
       <KonamiCode />
@@ -45,7 +42,6 @@ function App() {
         <FeatureSection />
         <HowToBuy />
         <About />
-        <BackedBy />
         <FinalCTA />
         <Footer />
         <MusicPlayer />

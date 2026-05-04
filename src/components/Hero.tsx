@@ -30,8 +30,6 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="relative mb-6"
         >
-          {/* Subtle Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-saffron/10 rounded-full blur-[60px]" />
           
           <div className="relative z-10">
             <motion.img 
