@@ -81,17 +81,17 @@ export default function MusicPlayer() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[9999] bg-[#0a0a0f] flex flex-col items-center justify-center p-6 text-center overflow-hidden font-sans"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.05)_0%,transparent_70%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,153,51,0.05)_0%,transparent_70%)]" />
 
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="relative z-10 w-full max-w-md bg-[#0f0f1a] rounded-[2.5rem] border border-white/5 p-10 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+              className="relative z-10 w-full max-w-md bg-black/80 rounded-[2.5rem] border border-white/5 p-10 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
             >
-              {/* Circular Logo with Lightning Effect */}
+              {/* Circular Logo with Saffron Lightning Effect */}
               <div className="relative w-32 h-32 mx-auto mb-10 group">
-                <div className="absolute inset-0 rounded-full bg-purple-600/20 blur-xl group-hover:bg-purple-600/40 transition-all duration-500" />
-                <div className="relative w-full h-full rounded-full border border-purple-500/30 overflow-hidden bg-black shadow-[0_0_30px_rgba(168,85,247,0.2)]">
+                <div className="absolute inset-0 rounded-full bg-saffron/20 blur-xl group-hover:bg-saffron/40 transition-all duration-500" />
+                <div className="relative w-full h-full rounded-full border border-saffron/30 overflow-hidden bg-black shadow-[0_0_30px_rgba(255,153,51,0.2)]">
                   <motion.div 
                     className="absolute inset-0 z-10 opacity-60"
                     animate={{ opacity: [0.2, 0.6, 0.2] }}
@@ -117,10 +117,10 @@ export default function MusicPlayer() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                   >
-                    <h1 className="text-purple-300 font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                    <h1 className="text-saffron font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-[0_0_10px_rgba(255,153,51,0.5)]">
                       Proof of Stink Entry Scan System
                     </h1>
-                    <p className="text-white/70 text-[15px] mb-10 leading-relaxed">
+                    <p className="text-white/70 text-[15px] mb-10 leading-relaxed font-bold">
                       Welcome to VrindaChain AI Layer 2. Proof-of-Stink verification is required to continue.
                     </p>
                     <div className="flex items-center justify-center gap-2 text-white/40 text-[11px] uppercase tracking-widest mb-10">
@@ -128,7 +128,7 @@ export default function MusicPlayer() {
                     </div>
                     <button
                       onClick={startVerification}
-                      className="w-full py-5 bg-[#7c3aed] hover:bg-[#8b5cf6] text-white font-bold text-xl rounded-2xl transition-all shadow-[0_10px_30px_rgba(124,58,237,0.3)] active:scale-[0.98]"
+                      className="w-full py-5 bg-saffron hover:bg-white text-black font-black text-xl rounded-2xl transition-all shadow-[0_10px_30px_rgba(255,153,51,0.3)] active:scale-[0.98] uppercase tracking-widest"
                     >
                       Start Verification
                     </button>
@@ -142,32 +142,32 @@ export default function MusicPlayer() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <h1 className="text-purple-300 font-black text-2xl md:text-3xl mb-10 tracking-tight drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                    <h1 className="text-saffron font-black text-2xl md:text-3xl mb-10 tracking-tight drop-shadow-[0_0_10px_rgba(255,153,51,0.5)]">
                       Proof of Stink Entry Scan System
                     </h1>
                     
                     <div className="w-full bg-white/5 h-4 rounded-full overflow-hidden mb-4 p-[3px] border border-white/5">
                       <motion.div 
-                        className="h-full bg-gradient-to-r from-[#7c3aed] to-[#a78bfa] rounded-full shadow-[0_0_15px_rgba(124,58,237,0.5)]"
+                        className="h-full bg-gradient-to-r from-india-green to-[#2ecc71] rounded-full shadow-[0_0_15px_rgba(19,136,8,0.5)]"
                         initial={{ width: 0 }}
                         animate={{ width: `${scanProgress}%` }}
                       />
                     </div>
                     <p className="text-white font-bold text-sm mb-12">Scanning: {scanProgress}%</p>
 
-                    <div className="text-white font-black text-lg md:text-xl uppercase tracking-widest mb-12 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                    <div className="text-india-green font-black text-lg md:text-xl uppercase tracking-widest mb-12 drop-shadow-[0_0_8px_rgba(19,136,8,0.3)]">
                       {scanText}
                     </div>
 
                     <div className="relative h-24 w-full bg-black/40 border border-white/5 rounded-2xl overflow-hidden">
                       <motion.div 
-                        className="absolute w-full h-[2px] bg-purple-400/50 shadow-[0_0_15px_#a855f7] z-10"
+                        className="absolute w-full h-[2px] bg-saffron/50 shadow-[0_0_15px_#ff9933] z-10"
                         animate={{ top: ['0%', '100%', '0%'] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
                       />
                       <div className="flex flex-col gap-3 p-6 opacity-20">
                         {[...Array(3)].map((_, i) => (
-                          <div key={i} className="h-2 w-full bg-purple-500/20 rounded-full" />
+                          <div key={i} className="h-2 w-full bg-india-green/20 rounded-full" />
                         ))}
                       </div>
                     </div>
@@ -182,13 +182,13 @@ export default function MusicPlayer() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                   >
-                    <h1 className="text-purple-300 font-black text-2xl md:text-3xl mb-12 tracking-tight drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                    <h1 className="text-saffron font-black text-2xl md:text-3xl mb-12 tracking-tight drop-shadow-[0_0_10px_rgba(255,153,51,0.5)]">
                       Proof of Stink Entry Scan System
                     </h1>
 
-                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-green-500/30 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
+                    <div className="w-24 h-24 bg-india-green/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-india-green/30 shadow-[0_0_30px_rgba(19,136,8,0.2)]">
                       <motion.svg 
-                        className="w-12 h-12 text-green-500"
+                        className="w-12 h-12 text-india-green"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         initial={{ scale: 0, rotate: -20 }}
@@ -199,8 +199,8 @@ export default function MusicPlayer() {
                       </motion.svg>
                     </div>
 
-                    <h2 className="text-green-500 font-black text-3xl mb-4 italic tracking-tight">REAL DEGEN DETECTED!</h2>
-                    <p className="text-white/60 text-[15px] leading-relaxed max-w-[300px] mx-auto">
+                    <h2 className="text-india-green font-black text-3xl mb-4 italic tracking-tight">REAL DEGEN DETECTED!</h2>
+                    <p className="text-white/60 text-[15px] leading-relaxed max-w-[300px] mx-auto font-bold">
                       Proof-of-Stink Verification successful. Unlocking V2 Molecular Hyperbridge™...
                     </p>
                   </motion.div>
