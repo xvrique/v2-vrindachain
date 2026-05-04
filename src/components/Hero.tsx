@@ -28,7 +28,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
         
-        {/* 2. Central Mascot Area (Proportional) */}
+        {/* 2. Central Mascot Area (Extreme Transparency Fix) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -38,24 +38,26 @@ export default function Hero() {
           {/* Subtle Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-saffron/10 rounded-full blur-[60px]" />
           
-          <motion.img 
-            src="/vrindachain.gif" 
-            alt="Vrindachain AI" 
-            className="w-[220px] md:w-[300px] h-auto contrast-125 brightness-110 drop-shadow-[0_0_40px_rgba(255,153,51,0.3)]"
-            style={{ filter: 'url(#chroma-key-gray)' }}
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <div className="relative z-10 bg-black rounded-full p-2">
+            <motion.img 
+              src="/vrindachain.gif" 
+              alt="Vrindachain AI" 
+              className="w-[220px] md:w-[280px] h-auto contrast-[1.8] brightness-[0.9] mix-blend-screen drop-shadow-[0_0_30px_rgba(255,153,51,0.2)]"
+              style={{ filter: 'url(#chroma-key-gray)' }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
         </motion.div>
 
-        {/* 3. Main Tagline (Clean & Compact) */}
+        {/* 3. Main Tagline */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           className="mb-8"
         >
-          <h2 className="text-2xl md:text-4xl font-black tracking-tight text-india-green drop-shadow-[0_0_15px_rgba(19,136,8,0.4)] uppercase mb-4">
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight text-india-green drop-shadow-[0_0_10px_rgba(19,136,8,0.3)] uppercase mb-4">
             0 Second Smell Times™
           </h2>
           
@@ -75,8 +77,8 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* 4. Action Buttons (Pill-shaped like reference) */}
-        <div className="flex flex-col gap-4 w-full max-w-[280px]">
+        {/* 4. Action Buttons (Pill-shaped) */}
+        <div className="flex flex-col gap-3 w-full max-w-[260px]">
           <motion.button
             className="group relative px-8 py-3 rounded-full bg-black border border-saffron/50 text-saffron font-bold text-sm uppercase tracking-widest transition-all hover:bg-saffron hover:text-black hover:shadow-[0_0_20px_rgba(255,153,51,0.3)]"
             whileHover={{ scale: 1.05 }}
@@ -86,7 +88,7 @@ export default function Hero() {
           </motion.button>
 
           <motion.button
-            className="group px-8 py-2.5 rounded-full border border-india-green/30 text-india-green/60 font-bold text-[11px] uppercase tracking-widest hover:border-india-green hover:text-india-green transition-all"
+            className="group px-8 py-2.5 rounded-full border border-india-green/30 text-india-green/60 font-bold text-[10px] uppercase tracking-widest hover:border-india-green hover:text-india-green transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -101,7 +103,7 @@ export default function Hero() {
         V2_PROTOCOL // STINK_TECH
       </div>
 
-      {/* Magic SVG Filter for Transparency */}
+      {/* Refined SVG Filter for Absolute Transparency */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <filter id="chroma-key-gray">
           <feColorMatrix 
@@ -109,7 +111,7 @@ export default function Hero() {
             values="1 0 0 0 0
                     0 1 0 0 0
                     0 0 1 0 0
-                    -3 -3 -3 6 0" 
+                    -15 -15 -15 25 0" 
           />
         </filter>
       </svg>
