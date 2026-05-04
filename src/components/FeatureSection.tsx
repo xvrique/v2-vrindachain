@@ -7,9 +7,9 @@ export default function FeatureSection() {
   return (
     <section className="relative py-32 px-4 bg-transparent overflow-hidden stink-haze">
       <div className="max-w-4xl mx-auto text-center relative z-20">
-        {/* Main Feature Card */}
+        {/* Main Feature Content (No Frame) */}
         <motion.div
-          className="glass-premium p-12 md:p-20 rough-border relative overflow-hidden"
+          className="relative py-12 md:py-20"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}

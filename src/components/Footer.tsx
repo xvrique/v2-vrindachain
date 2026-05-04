@@ -57,18 +57,6 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* Disclaimer */}
-        <motion.div
-          className="glass-strong rounded-2xl p-8 border border-white/10 mb-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-sm text-cream/70 leading-relaxed">
-            <span className="font-bold text-saffron">⚠️ Disclaimer:</span> Vrindachain is a meme project. Nothing on this website is financial advice, technical advice, or a guaranteed path to riches. This is a parody. Emotionally, yes it's real. Technically, please don't ask. Trade responsibly. Validate with cows. Avoid monkeys. Gas fees paid in regret.
-          </p>
-        </motion.div>
 
         {/* Bottom bar */}
         <motion.div

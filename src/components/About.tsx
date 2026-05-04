@@ -35,7 +35,7 @@ export default function About() {
 
         {/* Final Disclaimer Block */}
         <motion.div
-          className="mt-32 p-12 glass-premium rough-border text-center relative overflow-hidden"
+          className="mt-32 p-12 bg-black border border-white/20 text-center relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -46,7 +46,7 @@ export default function About() {
           </p>
 
           <motion.div 
-            className="inline-block px-8 py-4 stamp bg-red-500/10 border-red-500/30 text-red-500 font-black text-xl"
+            className="inline-block px-8 py-4 bg-black border border-red-500/50 text-red-500 font-black text-xl"
             whileHover={{ scale: 1.1, rotate: 2 }}
           >
             NOT FINANCIAL ADVICE. BARELY ADVICE.
