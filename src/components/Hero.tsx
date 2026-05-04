@@ -54,15 +54,15 @@ export default function Hero() {
             0 Second Smell Times™
           </h2>
           
-          <div className="h-6 relative overflow-hidden">
+          <div className="h-12 md:h-16 relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.p 
                 key={narrativeIndex}
-                className="text-white/40 text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] absolute inset-0 flex items-center justify-center"
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.3 }}
+                className="text-lg md:text-2xl font-black tracking-tight text-india-green drop-shadow-[0_0_10px_rgba(19,136,8,0.3)] uppercase absolute inset-0 flex items-center justify-center italic"
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 1.2, y: -10 }}
+                transition={{ duration: 0.5, ease: "backOut" }}
               >
                 {narratives[narrativeIndex]}
               </motion.p>
