@@ -22,7 +22,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-black">
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
       {/* 1. Background Video */}
       <BackgroundVideo />
 

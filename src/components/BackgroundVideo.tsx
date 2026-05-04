@@ -2,13 +2,14 @@ import { motion } from 'framer-motion'
 
 export default function BackgroundVideo() {
   return (
-    <div className="fixed inset-0 z-[-2] overflow-hidden bg-black">
+    <div className="fixed inset-0 z-0 overflow-hidden">
       {/* 1. The Video Background */}
       <video
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover"
       >
         <source src="/bg_nomusic.mp4" type="video/mp4" />
