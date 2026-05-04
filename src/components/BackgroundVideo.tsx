@@ -9,18 +9,15 @@ export default function BackgroundVideo() {
         muted
         loop
         playsInline
-        className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover opacity-50"
+        className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover"
       >
         <source src="/bg_nomusic.mp4" type="video/mp4" />
       </video>
 
-      {/* 2. Degen Overlays (Atmosphere) */}
+      {/* 2. Degen Overlays (Atmosphere - Reduced for visibility) */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {/* Global Tech Grid (Subtle) */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-        
-        {/* Dark Gradients to keep content readable */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
+        {/* Dark Gradients to keep content readable - more subtle */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.03]" />
         
         {/* Subtle color grade */}

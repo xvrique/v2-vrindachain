@@ -28,7 +28,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
         
-        {/* 2. Central Mascot Area (Extreme Transparency Fix) */}
+        {/* 2. Central Mascot Area (Clean & No Oval) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -38,11 +38,11 @@ export default function Hero() {
           {/* Subtle Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-saffron/10 rounded-full blur-[60px]" />
           
-          <div className="relative z-10 bg-black rounded-full p-2">
+          <div className="relative z-10">
             <motion.img 
               src="/vrindachain.gif" 
               alt="Vrindachain AI" 
-              className="w-[220px] md:w-[280px] h-auto contrast-[1.8] brightness-[0.9] mix-blend-screen drop-shadow-[0_0_30px_rgba(255,153,51,0.2)]"
+              className="w-[220px] md:w-[280px] h-auto contrast-[1.8] brightness-[1.1] mix-blend-lighten drop-shadow-[0_0_30px_rgba(255,153,51,0.2)]"
               style={{ filter: 'url(#chroma-key-gray)' }}
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
