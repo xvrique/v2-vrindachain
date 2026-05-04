@@ -65,6 +65,7 @@ export default function Hero() {
               src="/vrindachain.gif" 
               alt="Vrindachain AI" 
               className="w-[350px] md:w-[550px] lg:w-[650px] h-auto contrast-150 brightness-110 drop-shadow-[0_0_100px_rgba(255,153,51,0.6)]"
+              style={{ filter: 'url(#chroma-key-gray)' }}
               animate={{ 
                 y: [0, -10, 0],
                 rotate: [-1, 1, -1]
@@ -155,6 +156,20 @@ export default function Hero() {
           ))}
         </div>
       </div>
+
+      {/* 7. Magic SVG Filter to remove Gray Background (Chroma Key) */}
+      <svg width="0" height="0" className="absolute pointer-events-none">
+        <filter id="chroma-key-gray">
+          {/* This matrix targets gray/white and turns alpha to 0 */}
+          <feColorMatrix 
+            type="matrix" 
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    -3 -3 -3 6 0" 
+          />
+        </filter>
+      </svg>
     </section>
   )
 }
