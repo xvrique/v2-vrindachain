@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function BackgroundVideo() {
   return (
-    <div className="fixed inset-0 z-[-10] w-full h-full overflow-hidden bg-black pointer-events-none">
+    <div className="fixed inset-0 z-0 w-full h-full overflow-hidden bg-black pointer-events-none">
       {/* 1. The Video Background - Locked to Viewport */}
       <video
         autoPlay
