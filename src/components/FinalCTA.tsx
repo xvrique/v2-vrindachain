@@ -3,37 +3,6 @@ import { motion } from 'framer-motion'
 export default function FinalCTA() {
   return (
     <section className="relative py-32 px-4 bg-transparent">
-      {/* Glowing orb background */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(255, 153, 51, 0.3) 0%, rgba(255, 102, 0, 0.2) 40%, transparent 70%)',
-          filter: 'blur(60px)',
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.5, 0.7, 0.5],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-
-      {/* Dark blob shape */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-[40%] bg-gradient-to-br from-gray-900/80 to-black/90"
-        animate={{
-          borderRadius: ['40%', '50%', '45%', '40%'],
-          rotate: [0, 5, -5, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div

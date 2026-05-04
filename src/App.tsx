@@ -8,7 +8,6 @@ import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 import KonamiCode from './components/KonamiCode'
 import CursorTrail from './components/CursorTrail'
-import InteractiveCow from './components/InteractiveCow'
 import BackgroundVideo from './components/BackgroundVideo'
 import MusicPlayer from './components/MusicPlayer'
 
@@ -31,7 +30,6 @@ function App() {
       {/* Interactive Elements */}
       <KonamiCode />
       {/* <CursorTrail /> */}
-      <InteractiveCow />
       
       {/* Main content */}
       <div className="relative z-10">

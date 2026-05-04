@@ -9,7 +9,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative py-20 px-4 border-t border-white/10">
+    <footer className="relative py-20 px-4 bg-black border-t border-white/10 w-full">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="grid md:grid-cols-3 gap-12 mb-16"
