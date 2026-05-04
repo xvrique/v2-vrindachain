@@ -37,56 +37,28 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-6xl">
         
-        {/* 3. Central Mascot Area with HUD Frame */}
+        {/* 3. Central Mascot Area (Cleaner & Smaller) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "backOut" }}
-          className="relative group mb-8"
+          className="relative mb-6"
         >
-          {/* Intense Portal Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-saffron/20 rounded-full blur-[120px] animate-pulse" />
+          {/* Subtle Portal Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-saffron/10 rounded-full blur-[80px] animate-pulse" />
           
-          {/* High-Tech Frame (The Podium) */}
-          <div className="absolute -inset-10 pointer-events-none">
-            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-saffron" />
-            <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-saffron" />
-            <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-india-green" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-india-green" />
-            
-            {/* Corner Labels */}
-            <span className="absolute top-0 left-0 -translate-y-full text-[10px] font-mono text-saffron tracking-[0.5em] pb-2">SCANNING_V2</span>
-            <span className="absolute bottom-0 right-0 translate-y-full text-[10px] font-mono text-india-green tracking-[0.5em] pt-2">CORE_ACTIVE</span>
-          </div>
-
-          {/* Main Logo (GIF) with filters to hide checkers */}
-          <div className="relative z-10 p-4">
+          {/* Main Logo (GIF) - Smaller size */}
+          <div className="relative z-10">
             <motion.img 
               src="/vrindachain.gif" 
               alt="Vrindachain AI" 
-              className="w-[350px] md:w-[550px] lg:w-[650px] h-auto contrast-150 brightness-110 drop-shadow-[0_0_100px_rgba(255,153,51,0.6)]"
+              className="w-[280px] md:w-[380px] lg:w-[450px] h-auto contrast-150 brightness-110 drop-shadow-[0_0_60px_rgba(255,153,51,0.4)]"
               style={{ filter: 'url(#chroma-key-gray)' }}
               animate={{ 
-                y: [0, -10, 0],
-                rotate: [-1, 1, -1]
+                y: [0, -8, 0]
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-            
-            {/* Blend Overlay - Trying to punch out the darks */}
-            <div className="absolute inset-0 bg-black/40 mix-blend-multiply pointer-events-none rounded-3xl" />
-          </div>
-
-          {/* Dynamic HUD Labels */}
-          <div className="absolute -right-24 top-1/4 hidden lg:flex flex-col items-start gap-4 text-left">
-            <div className="p-2 border-l-2 border-saffron bg-saffron/5">
-              <div className="text-[8px] font-mono text-saffron uppercase mb-1">Status</div>
-              <div className="text-xs font-black text-white uppercase tracking-wider">Operational</div>
-            </div>
-            <div className="p-2 border-l-2 border-india-green bg-india-green/5">
-              <div className="text-[8px] font-mono text-india-green uppercase mb-1">Threat</div>
-              <div className="text-xs font-black text-white uppercase tracking-wider">Low_Gutter</div>
-            </div>
           </div>
         </motion.div>
 
