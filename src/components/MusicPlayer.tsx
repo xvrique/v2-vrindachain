@@ -7,11 +7,8 @@ export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    // Check if user already entered in this session
-    const entered = sessionStorage.getItem('vrindachain-entered')
-    if (entered) {
-      setShowEnterScreen(false)
-    }
+    // Entrance screen always shows on full page load for maximum atmosphere
+    setShowEnterScreen(true)
 
     audioRef.current = new Audio('/Stink Critical.mp3')
     audioRef.current.loop = true
@@ -30,7 +27,6 @@ export default function MusicPlayer() {
       audioRef.current.play().catch(err => console.log("Audio play failed:", err))
       setIsPlaying(true)
       setShowEnterScreen(false)
-      sessionStorage.setItem('vrindachain-entered', 'true')
     }
   }
 
@@ -54,15 +50,18 @@ export default function MusicPlayer() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center p-6 text-center"
+            className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center p-6 text-center overflow-hidden"
           >
+            {/* Background Texture Overlay */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+            
             {/* Background Atmosphere */}
             <motion.div
               className="absolute inset-0 opacity-30"
               style={{
                 background: 'radial-gradient(circle at 50% 50%, #ff9933 0%, transparent 70%)'
               }}
-              animate={{ opacity: [0.1, 0.4, 0.1], scale: [1, 1.1, 1] }}
+              animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.2, 1] }}
               transition={{ duration: 4, repeat: Infinity }}
             />
             
@@ -73,49 +72,53 @@ export default function MusicPlayer() {
               className="relative z-10"
             >
               <motion.h2 
-                className="text-white font-accent text-7xl md:text-9xl mb-6 tracking-tighter drop-shadow-[0_0_50px_rgba(255,153,51,0.5)]"
+                className="text-white font-black text-6xl md:text-9xl mb-6 tracking-tighter drop-shadow-[0_0_30px_rgba(255,153,51,0.5)] italic"
                 animate={{ 
-                  textShadow: [
-                    "0 0 20px rgba(255,153,51,0.5)",
-                    "0 0 50px rgba(255,153,51,0.8)",
-                    "0 0 20px rgba(255,153,51,0.5)"
+                  skewX: [0, -2, 2, 0],
+                  filter: [
+                    "drop-shadow(0 0 10px rgba(255,153,51,0.5))",
+                    "drop-shadow(0 0 30px rgba(255,153,51,0.8))",
+                    "drop-shadow(0 0 10px rgba(255,153,51,0.5))"
                   ]
                 }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: 0.2, repeat: Infinity, repeatType: "mirror" }}
               >
                 VRINDACHAIN AI
               </motion.h2>
 
               <div className="flex items-center justify-center gap-4 mb-16">
-                <div className="h-[1px] w-12 bg-saffron/50"></div>
-                <p className="text-saffron font-black text-xs md:text-sm uppercase tracking-[0.5em] animate-pulse">System Status: Stink Critical</p>
-                <div className="h-[1px] w-12 bg-saffron/50"></div>
+                <div className="h-[1px] w-8 md:w-16 bg-gradient-to-r from-transparent to-saffron"></div>
+                <p className="text-saffron font-black text-[10px] md:text-xs uppercase tracking-[0.6em] animate-pulse">System Status: Stink Critical</p>
+                <div className="h-[1px] w-8 md:w-16 bg-gradient-to-l from-transparent to-saffron"></div>
               </div>
               
               <motion.button
                 onClick={startMusic}
-                className="group relative px-20 py-8 bg-white text-black font-black text-2xl rounded-sm overflow-hidden transition-all duration-500"
+                className="group relative px-16 py-6 bg-transparent text-white font-black text-xl rounded-sm overflow-hidden transition-all duration-300 border-2 border-white/20 hover:border-saffron shadow-2xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div
-                  className="absolute inset-0 bg-saffron translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                  className="absolute inset-0 bg-gradient-to-r from-saffron to-india-green opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 />
-                <span className="relative z-10 uppercase tracking-widest group-hover:text-black">Enter the Gutter</span>
+                <span className="relative z-10 uppercase tracking-[0.3em] group-hover:text-black transition-colors duration-300">Enter the Gutter</span>
               </motion.button>
               
-              <div className="mt-12 flex flex-col items-center gap-2">
-                <p className="text-white/20 font-mono text-[10px] uppercase tracking-[0.2em]">Authentic Indian Trap Loaded</p>
-                <div className="flex gap-1 h-4 items-end">
-                  {[1, 2, 3, 4, 5, 6, 7].map(i => (
+              <div className="mt-16 flex flex-col items-center gap-4">
+                <div className="flex gap-1.5 h-6 items-end">
+                  {[...Array(12)].map((_, i) => (
                     <motion.div 
                       key={i} 
-                      className="w-[2px] bg-saffron/30" 
-                      animate={{ height: [4, 16, 4] }}
-                      transition={{ duration: 1, repeat: Infinity, delay: i * 0.1 }}
+                      className="w-[3px] bg-saffron/40" 
+                      animate={{ 
+                        height: [6, Math.random() * 24 + 6, 6],
+                        backgroundColor: i % 2 === 0 ? '#ff9933' : '#138808'
+                      }}
+                      transition={{ duration: 0.5 + Math.random(), repeat: Infinity, delay: i * 0.05 }}
                     />
                   ))}
                 </div>
+                <p className="text-white/30 font-mono text-[9px] uppercase tracking-[0.4em] italic">Authentic Indian Trap Loaded</p>
               </div>
             </motion.div>
 
