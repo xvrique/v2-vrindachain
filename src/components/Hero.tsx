@@ -1,154 +1,129 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import ThreeCanvas from './ThreeCanvas'
+import BackgroundVideo from './BackgroundVideo'
 
 export default function Hero() {
-  const containerRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [narrativeIndex, setNarrativeIndex] = useState(0)
 
   const narratives = [
-    "The first AI Layer 2 born from gutter liquidity, cow validators, and monkey security.",
-    "Scaling so hard it makes a crowded Vrindavan rickshaw look like a private jet. No brakes, only bhakti.",
-    "Liquidity pulled straight from the gutters of Banke Bihari. Smells like success and questionable street food.",
-    "Our AI was trained on 5000 years of spiritual sarcasm and rickshaw driver insults. Enter at your own risk.",
-    "Validator nodes powered by cows who only accept hay and your dignity as gas fees. 100% organic waste."
+    "Liquidity pulled straight from the gutters of Banke Bihari.",
+    "0% Tax, 100% Smell. Proprietary Stink-Tech™ inside.",
+    "Rickshaw Rollups: Scaling the chaos of Vrindavan to L2.",
+    "Bovine Consensus: Our nodes are literally holy cows.",
+    "The first AI that can actually smell your fear (and your bags)."
   ]
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       setNarrativeIndex((prev) => (prev + 1) % narratives.length)
-    }, 4000) // Change every 4 seconds
-    return () => clearInterval(interval)
+    }, 4000)
+    return () => clearInterval(timer)
   }, [])
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200])
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -150])
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 45])
-
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-4 md:px-12 overflow-hidden bg-black">
-      {/* Interactive 3D Background - Subtle */}
-      <ThreeCanvas />
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-black">
+      {/* 1. Portal Background & Video */}
+      <BackgroundVideo />
 
-      <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      {/* 2. Central Portal Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none">
+        <motion.div
+          className="absolute inset-0 bg-saffron/20 rounded-full blur-[120px]"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute inset-[15%] bg-india-green/10 rounded-full blur-[100px]"
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.3, 0.1] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center text-center max-w-4xl">
         
-        {/* Left Content */}
-        <div className="text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+        {/* 3. Main Logo (GIF) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "backOut" }}
+          className="relative mb-8"
+        >
+          <img 
+            src="/vrindachain.gif" 
+            alt="Vrindachain AI" 
+            className="w-[300px] md:w-[450px] lg:w-[550px] h-auto drop-shadow-[0_0_60px_rgba(255,153,51,0.4)]"
+          />
+          
+          <motion.div 
+            className="absolute inset-0 pointer-events-none border-2 border-saffron/20 rounded-xl"
+            animate={{ scale: [1, 1.02, 1], opacity: [0, 0.5, 0] }}
+            transition={{ duration: 0.2, repeat: Infinity }}
+          />
+        </motion.div>
+
+        {/* 4. Tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="mb-12"
+        >
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black italic tracking-tighter text-india-green drop-shadow-[0_0_15px_rgba(19,136,8,0.5)]">
+            0 Second Smell Times™
+          </h2>
+          
+          <div className="h-12 mt-6 relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.p 
+                key={narrativeIndex}
+                className="text-white/40 text-sm md:text-base font-mono uppercase tracking-[0.3em] absolute inset-0 flex items-center justify-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4 }}
+              >
+                {narratives[narrativeIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        {/* 5. Pill Buttons */}
+        <div className="flex flex-col gap-6 w-full max-w-xs">
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ delay: 0.8 }}
+            className="group relative px-10 py-5 rounded-full bg-black border-2 border-saffron/50 text-white font-black text-lg uppercase tracking-widest overflow-hidden transition-all hover:border-saffron hover:shadow-[0_0_30px_rgba(255,153,51,0.4)]"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8">
-              <span className="w-2 h-2 bg-saffron rounded-full animate-pulse"></span>
-              <span className="text-white/60 font-mono text-[10px] uppercase tracking-[0.2em]">Layer 2 Protocol</span>
-            </div>
+            <span className="relative z-10 group-hover:text-saffron transition-colors">Yeah, I'm Finna Bridge</span>
+          </motion.button>
 
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.85] tracking-tighter">
-              <span className="text-white">VRINDA</span><br />
-              <span className="bg-gradient-to-r from-saffron to-india-green bg-clip-text text-transparent">CHAIN AI</span>
-            </h1>
-
-            <div className="h-20 mb-12 relative overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.p 
-                  key={narrativeIndex}
-                  className="text-xl md:text-2xl text-white/50 max-w-xl leading-snug font-medium absolute inset-0 flex items-center"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  {narratives[narrativeIndex]}
-                </motion.p>
-              </AnimatePresence>
-            </div>
-
-            <div className="flex flex-wrap gap-6 items-center">
-              <motion.button
-                className="px-10 py-5 rounded-xl font-black text-lg text-white bg-white/5 border border-white/20 hover:bg-white hover:text-black transition-all duration-500 uppercase tracking-widest"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Enter Gutter
-              </motion.button>
-              
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-peacock-green text-[10px] font-black uppercase tracking-widest">System Status</span>
-                  <div className="w-1.5 h-1.5 bg-peacock-green rounded-full animate-ping"></div>
-                </div>
-                <span className="text-white/30 font-mono text-xs italic">"Smell-test passed"</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right Content - Visual Mascot */}
-        <div className="relative flex justify-center lg:justify-end">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative w-[340px] h-[340px] md:w-[440px] md:h-[440px]"
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className="group px-10 py-4 rounded-full border border-india-green/30 text-india-green font-black text-sm uppercase tracking-widest hover:bg-india-green hover:text-black transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {/* Geometric accents */}
-            <div className="absolute inset-0 border border-white/5 rounded-full animate-spin-slow"></div>
-            <div className="absolute inset-8 border border-dashed border-white/5 rounded-full animate-reverse-spin-slow"></div>
-            
-            {/* The Glass Shield */}
-            <div className="absolute inset-0 glass-premium rounded-[3rem] border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-saffron/5 to-india-green/5"></div>
-              
-              <motion.div
-                className="text-[140px] md:text-[180px] font-accent text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]"
-                animate={{ 
-                  y: [0, -10, 0],
-                  filter: ['brightness(1)', 'brightness(1.5)', 'brightness(1)']
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                V2
-              </motion.div>
-
-              {/* Status Indicators */}
-              <div className="absolute top-6 right-6 flex flex-col items-end gap-1">
-                <span className="text-[10px] font-black text-saffron uppercase">Verified</span>
-                <div className="h-[2px] w-8 bg-saffron"></div>
-              </div>
-              
-              <div className="absolute bottom-6 left-6 flex flex-col items-start gap-1">
-                <span className="text-[10px] font-black text-india-green uppercase">AI Core</span>
-                <div className="h-[2px] w-8 bg-india-green"></div>
-              </div>
-            </div>
-
-            {/* Flying Annotations */}
-            <motion.div
-              className="absolute -top-6 -right-6 w-24 h-24 doodle-arrow text-saffron opacity-40 rotate-[140deg]"
-              animate={{ rotate: [140, 150, 140] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-          </motion.div>
+            Read Stinkpaper
+          </motion.button>
         </div>
 
       </div>
 
-      {/* Footer-like text */}
-      <div className="absolute bottom-10 left-0 w-full px-12 flex justify-between items-end opacity-20">
-        <div className="flex flex-col">
-          <span className="text-[10px] font-black uppercase tracking-[0.5em]">Coordinate</span>
-          <span className="text-xs font-mono">27.5851° N, 77.7081° E</span>
-        </div>
-        <div className="flex flex-col items-end">
-          <span className="text-[10px] font-black uppercase tracking-[0.5em]">Protocol</span>
-          <span className="text-xs font-mono">STINK_V2.0.4</span>
-        </div>
+      {/* 6. Corner Data Decals */}
+      <div className="absolute bottom-8 left-8 text-white/10 font-mono text-[10px] uppercase tracking-[0.3em] hidden md:block">
+        Latency: 0ms<br />
+        Nodes: Active
+      </div>
+      <div className="absolute bottom-8 right-8 text-white/10 font-mono text-[10px] text-right uppercase tracking-[0.3em] hidden md:block">
+        Uptime: 99.9%<br />
+        Status: Critical
       </div>
     </section>
   )
