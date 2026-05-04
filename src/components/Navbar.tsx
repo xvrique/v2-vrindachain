@@ -21,11 +21,7 @@ export default function Navbar({ scrollY }: NavbarProps) {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
-          scrollY > 50
-            ? 'bg-black/90 backdrop-blur-xl border-b border-white/10'
-            : 'bg-transparent'
-        }`}
+        className="fixed top-0 w-full z-[100] transition-all duration-500 bg-black/95 backdrop-blur-xl border-b border-white/5"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
       >

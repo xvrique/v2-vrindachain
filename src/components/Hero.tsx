@@ -1,7 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import BackgroundVideo from './BackgroundVideo'
-
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [narrativeIndex, setNarrativeIndex] = useState(0)
@@ -23,9 +21,6 @@ export default function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* 1. Background Video */}
-      <BackgroundVideo />
-
       <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
         
         {/* 2. Central Mascot Area (Clean & No Oval) */}
