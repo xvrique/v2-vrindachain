@@ -53,7 +53,7 @@ export default function Roadmap() {
   ]
 
   return (
-    <section id="roadmap" className="relative py-24 px-4 bg-black">
+    <section id="roadmap" className="relative py-24 px-4 bg-transparent">
       {/* Radial gradient background */}
       <div 
         className="absolute inset-0 opacity-30"

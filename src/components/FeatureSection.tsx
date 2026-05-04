@@ -5,10 +5,7 @@ export default function FeatureSection() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <section className="relative py-32 px-4 bg-black overflow-hidden stink-haze">
-      {/* Decorative background element */}
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent z-10"></div>
-      
+    <section className="relative py-32 px-4 bg-transparent overflow-hidden stink-haze">
       {/* Floating particles specific to this section */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
         {Array.from({ length: 10 }).map((_, i) => (
@@ -109,9 +106,6 @@ export default function FeatureSection() {
           </div>
         </motion.div>
       </div>
-
-      {/* Decorative bottom element */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent z-10"></div>
     </section>
   )
 }

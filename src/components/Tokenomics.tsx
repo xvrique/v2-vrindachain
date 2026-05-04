@@ -12,7 +12,7 @@ export default function Tokenomics() {
   ]
 
   return (
-    <section id="tokenomics" className="relative py-24 px-4 bg-black">
+    <section id="tokenomics" className="relative py-24 px-4 bg-transparent">
       {/* Radial gradient background */}
       <div 
         className="absolute inset-0 opacity-30"

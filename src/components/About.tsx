@@ -54,7 +54,7 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="relative py-32 px-4 bg-black overflow-hidden">
+    <section id="about" className="relative py-32 px-4 bg-transparent overflow-hidden">
       {/* Decorative background mandala parallax (simplified for this section) */}
       <div className="absolute top-0 right-0 w-96 h-96 opacity-5 pointer-events-none">
         <svg viewBox="0 0 100 100" className="rotating-mandala w-full h-full text-saffron fill-current">

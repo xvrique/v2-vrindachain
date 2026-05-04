@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-32 px-4 bg-black">
+    <section className="relative py-32 px-4 bg-transparent">
       {/* Glowing orb background */}
       <motion.div
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"

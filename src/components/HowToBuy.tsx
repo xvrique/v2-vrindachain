@@ -39,7 +39,7 @@ export default function HowToBuy() {
   ]
 
   return (
-    <section id="how-to-buy" className="relative py-24 px-4 bg-black">
+    <section id="how-to-buy" className="relative py-24 px-4 bg-transparent">
       <div className="max-w-5xl mx-auto">
         {/* Section Title */}
         <motion.div
