@@ -50,9 +50,9 @@ export default function Navbar({ scrollY }: NavbarProps) {
             ))}
           </div>
 
-          {/* Center Branding (Minimal) */}
+          {/* Center Branding (Enlarged) */}
           <div className="flex items-center gap-2 group cursor-pointer">
-            <span className="text-saffron font-black text-lg">$V2</span>
+            <span className="text-saffron font-black text-3xl tracking-tighter drop-shadow-[0_0_15px_rgba(255,153,51,0.4)] transition-all group-hover:scale-110">$V2</span>
           </div>
 
           {/* Right Links */}

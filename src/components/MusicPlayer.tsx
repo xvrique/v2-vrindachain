@@ -72,7 +72,7 @@ export default function MusicPlayer() {
               className="relative z-10"
             >
               <motion.h2 
-                className="text-white font-black text-6xl md:text-9xl mb-6 tracking-tighter drop-shadow-[0_0_30px_rgba(255,153,51,0.5)] italic"
+                className="text-white font-black text-7xl md:text-[10rem] mb-6 tracking-tighter drop-shadow-[0_0_30px_rgba(255,153,51,0.5)] italic"
                 animate={{ 
                   skewX: [0, -2, 2, 0],
                   filter: [

@@ -35,7 +35,7 @@ export default function Hero() {
             <motion.img 
               src="/vrindachain.gif" 
               alt="Vrindachain AI" 
-              className="w-[220px] md:w-[280px] h-auto contrast-[1.8] brightness-[1.1] mix-blend-lighten drop-shadow-[0_0_30px_rgba(255,153,51,0.2)]"
+              className="w-[280px] md:w-[360px] h-auto contrast-[1.8] brightness-[1.1] mix-blend-lighten drop-shadow-[0_0_40px_rgba(255,153,51,0.3)]"
               style={{ filter: 'url(#chroma-key-gray)' }}
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
