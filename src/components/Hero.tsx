@@ -32,48 +32,51 @@ export default function Hero() {
         >
           
           <div className="relative z-10">
-            {/* ⚡ Lightning Sparks (Absolute positioned around the logo) */}
-            <div className="absolute inset-0 pointer-events-none">
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-[2px] h-12 bg-saffron"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    rotate: `${Math.random() * 360}deg`,
-                    filter: 'blur(1px)'
-                  }}
-                  animate={{
-                    opacity: [0, 1, 0],
-                    scaleY: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 0.1 + Math.random() * 0.2,
-                    repeat: Infinity,
-                    repeatDelay: Math.random() * 3,
-                    delay: i * 0.5
-                  }}
-                />
-              ))}
-            </div>
+            {/* ⚡ Mega Purple Lightning (Background) */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 opacity-80 pointer-events-none"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ 
+                scale: [1, 1.05, 1],
+                opacity: [0.6, 1, 0.6],
+                filter: [
+                  "drop-shadow(0 0 20px #a855f7)",
+                  "drop-shadow(0 0 60px #d946ef)",
+                  "drop-shadow(0 0 20px #a855f7)"
+                ]
+              }}
+              transition={{ duration: 0.1, repeat: Infinity, repeatType: "mirror" }}
+            >
+              {/* Central Lightning Bolt Shape */}
+              <svg viewBox="0 0 100 100" className="w-full h-full fill-white/20">
+                <path d="M60 10 L30 50 L50 50 L40 90 L70 50 L50 50 Z" className="fill-purple-500/40 blur-[2px]" />
+                <path d="M60 10 L30 50 L50 50 L40 90 L70 50 L50 50 Z" className="fill-white blur-[1px]" />
+              </svg>
+            </motion.div>
+
+            {/* Floating Glow Sphere (Purple) */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-600/30 rounded-full blur-[100px] z-0"
+              animate={{ scale: [1, 1.5, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
 
             <motion.img 
               src="/vrindachain.gif" 
               alt="Vrindachain AI" 
-              className="w-[280px] md:w-[360px] h-auto contrast-[1.8] brightness-[1.1] mix-blend-lighten"
+              className="w-[280px] md:w-[360px] h-auto contrast-[1.8] brightness-[1.1] mix-blend-lighten relative z-10"
               style={{ filter: 'url(#chroma-key-gray)' }}
               animate={{ 
                 y: [0, -6, 0],
                 filter: [
-                  'drop-shadow(0 0 20px rgba(255,153,51,0.2)) url(#chroma-key-gray)',
-                  'drop-shadow(0 0 60px rgba(255,153,51,0.6)) url(#chroma-key-gray)',
-                  'drop-shadow(0 0 20px rgba(255,153,51,0.2)) url(#chroma-key-gray)'
+                  'drop-shadow(0 0 30px rgba(168,85,247,0.4)) url(#chroma-key-gray)',
+                  'drop-shadow(0 0 80px rgba(217,70,239,0.8)) url(#chroma-key-gray)',
+                  'drop-shadow(0 0 30px rgba(168,85,247,0.4)) url(#chroma-key-gray)'
                 ]
               }}
               transition={{ 
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                filter: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                filter: { duration: 0.15, repeat: Infinity, repeatType: "mirror" }
               }}
             />
           </div>
