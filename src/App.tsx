@@ -28,7 +28,7 @@ function App() {
   }, [])
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-hidden">
+    <div className="relative w-full min-h-screen bg-black">
       <BackgroundVideo />
       <ParticleBackground />
       
