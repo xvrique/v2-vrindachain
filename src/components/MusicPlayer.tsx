@@ -4,12 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [showEnterScreen, setShowEnterScreen] = useState(true)
+  const [verificationState, setVerificationState] = useState<'idle' | 'scanning' | 'success'>('idle')
+  const [scanProgress, setScanProgress] = useState(0)
+  const [scanText, setScanText] = useState('PROCESSING SOLANA BALANCE')
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    // Entrance screen always shows on full page load for maximum atmosphere
     setShowEnterScreen(true)
-
     audioRef.current = new Audio('/Stink Critical.mp3')
     audioRef.current.loop = true
     audioRef.current.volume = 0.4
@@ -32,7 +33,6 @@ export default function MusicPlayer() {
 
   const toggleMusic = () => {
     if (!audioRef.current) return
-
     if (isPlaying) {
       audioRef.current.pause()
     } else {
@@ -41,111 +41,177 @@ export default function MusicPlayer() {
     setIsPlaying(!isPlaying)
   }
 
+  const startVerification = () => {
+    setVerificationState('scanning')
+    let progress = 0
+    const interval = setInterval(() => {
+      progress += Math.random() * 12
+      if (progress >= 100) {
+        progress = 100
+        setScanProgress(100)
+        clearInterval(interval)
+        setTimeout(() => {
+          setVerificationState('success')
+          setTimeout(() => {
+            startMusic()
+          }, 2500)
+        }, 800)
+      }
+      setScanProgress(Math.floor(progress))
+      
+      const statuses = [
+        'PROCESSING SOLANA BALANCE', 
+        'ANALYZING STINK LEVELS', 
+        'VERIFYING BOVINE CONSENSUS', 
+        'LOCATING MONKEY ASSETS',
+        'CLEANING THE GUTTER...',
+        'BYPASSING RICKSHAW PROTOCOLS'
+      ]
+      setScanText(statuses[Math.floor(progress / 18) % statuses.length])
+    }, 400)
+  }
+
   return (
     <>
-      {/* 1. Enter Overlay (Splash Screen) */}
       <AnimatePresence>
         {showEnterScreen && (
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center p-6 text-center overflow-hidden"
+            className="fixed inset-0 z-[9999] bg-[#0a0a0f] flex flex-col items-center justify-center p-6 text-center overflow-hidden font-sans"
           >
-            {/* Background Texture Overlay */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
-            
-            {/* 1. Background Atmosphere & Dirt Texture */}
-            <div className="absolute inset-0 opacity-40 pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,153,51,0.1)_0%,transparent_70%)]" />
-            
-            {/* 2. Terminal Scanline Effect */}
-            <div className="absolute inset-0 pointer-events-none opacity-20 z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.05)_0%,transparent_70%)]" />
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="relative z-10 w-full max-w-2xl border border-white/5 bg-black/40 backdrop-blur-xl p-8 md:p-12 rough-border"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="relative z-10 w-full max-w-md bg-[#0f0f1a] rounded-[2.5rem] border border-white/5 p-10 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             >
-              {/* Header: System Identity */}
-              <div className="flex justify-between items-start mb-12 border-b border-white/10 pb-6">
-                <div className="text-left">
-                  <h2 className="text-saffron font-black text-3xl tracking-tighter italic mb-1">VRINDACHAIN_OS_V2</h2>
-                  <p className="text-white/30 font-mono text-[9px] uppercase tracking-[0.3em]">Build: Gutter_Alpha_777</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-india-green font-bold text-xs animate-pulse">● SECURED_BY_MONKEYS</div>
-                  <p className="text-white/20 font-mono text-[9px] uppercase mt-1">Stink: CRITICAL</p>
-                </div>
-              </div>
-
-              {/* Central Identity Verification */}
-              <div className="mb-12">
-                <motion.h1 
-                  className="text-white font-black text-5xl md:text-7xl mb-8 tracking-tighter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] italic uppercase"
-                  animate={{ opacity: [1, 0.8, 1] }}
-                  transition={{ duration: 0.1, repeat: Infinity }}
-                >
-                  Verification Required
-                </motion.h1>
-
-                {/* Terminal Log Output */}
-                <div className="bg-black/60 p-4 font-mono text-[10px] md:text-xs text-left mb-8 border-l-2 border-saffron/30 space-y-1">
-                  <p className="text-white/40">[\u003e] INITIALIZING_GUTTER_PROTOCOLS...</p>
-                  <p className="text-white/40">[\u003e] ANALYZING_STINK_CONCENTRATION: <span className="text-india-green">OPTIMAL</span></p>
-                  <p className="text-white/40">[\u003e] SCANNING_FOR_BOVINE_CONSENSUS... <span className="text-saffron">DONE</span></p>
-                  <p className="text-white/60 font-bold">[\u003e] IDENTITY: <span className="text-white">UNKNOWN_DEGEN</span></p>
-                  <p className="text-india-green animate-pulse">[\u003e] STATUS: READY_TO_ENTER_THE_SEWERS</p>
-                </div>
-              </div>
-              
-              <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
-                <div className="flex flex-col items-start">
-                  <span className="text-white/30 text-[10px] font-mono uppercase tracking-widest mb-2 italic">Agreement:</span>
-                  <p className="text-white/20 text-[9px] text-left max-w-[200px]">By entering, you accept full responsibility for bags, stink, and monkey chaos.</p>
-                </div>
-
-                <motion.button
-                  onClick={startMusic}
-                  className="group relative px-12 py-5 bg-saffron text-black font-black text-xl rounded-sm overflow-hidden transition-all duration-300 shadow-[0_0_30px_rgba(255,153,51,0.3)]"
-                  whileHover={{ scale: 1.05, backgroundColor: '#ffffff' }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 uppercase tracking-[0.2em]">Verify & Enter</span>
-                  <motion.div
-                    className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"
+              {/* Circular Logo with Lightning Effect */}
+              <div className="relative w-32 h-32 mx-auto mb-10 group">
+                <div className="absolute inset-0 rounded-full bg-purple-600/20 blur-xl group-hover:bg-purple-600/40 transition-all duration-500" />
+                <div className="relative w-full h-full rounded-full border border-purple-500/30 overflow-hidden bg-black shadow-[0_0_30px_rgba(168,85,247,0.2)]">
+                  <motion.div 
+                    className="absolute inset-0 z-10 opacity-60"
+                    animate={{ opacity: [0.2, 0.6, 0.2] }}
+                    transition={{ duration: 0.1, repeat: Infinity }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
+                      <path d="M60 10 L30 50 L50 50 L40 90 L70 50 L50 50 Z" />
+                    </svg>
+                  </motion.div>
+                  <img 
+                    src="/vrindachain.gif" 
+                    alt="Logo" 
+                    className="w-full h-full object-cover mix-blend-lighten contrast-125" 
                   />
-                </motion.button>
-              </div>
-              
-              {/* Audio Visualizer Footer */}
-              <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
-                <p className="text-white/10 font-mono text-[8px] uppercase tracking-[0.4em]">Auth_Trap_Loaded.wav</p>
-                <div className="flex gap-1 h-3 items-end">
-                  {[...Array(8)].map((_, i) => (
-                    <motion.div 
-                      key={i} 
-                      className="w-[2px] bg-white/10" 
-                      animate={{ height: [2, 12, 2] }}
-                      transition={{ duration: 1, repeat: Infinity, delay: i * 0.1 }}
-                    />
-                  ))}
                 </div>
               </div>
-            </motion.div>
 
-            {/* Corner Decorative Elements */}
-            <div className="absolute top-10 left-10 text-white/10 font-mono text-[10px] text-left uppercase tracking-widest hidden md:block border-l border-white/10 pl-4">
-              Sector: 27.5851° N<br />
-              Region: VRINDAVAN<br />
-              Vibe: GRITTY TRAP
-            </div>
+              <AnimatePresence mode="wait">
+                {verificationState === 'idle' && (
+                  <motion.div
+                    key="idle"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                  >
+                    <h1 className="text-purple-300 font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                      Proof of Stink Entry Scan System
+                    </h1>
+                    <p className="text-white/70 text-[15px] mb-10 leading-relaxed">
+                      Welcome to VrindaChain AI Layer 2. Proof-of-Stink verification is required to continue.
+                    </p>
+                    <div className="flex items-center justify-center gap-2 text-white/40 text-[11px] uppercase tracking-widest mb-10">
+                      <span className="text-base">🔊</span> Sound On
+                    </div>
+                    <button
+                      onClick={startVerification}
+                      className="w-full py-5 bg-[#7c3aed] hover:bg-[#8b5cf6] text-white font-bold text-xl rounded-2xl transition-all shadow-[0_10px_30px_rgba(124,58,237,0.3)] active:scale-[0.98]"
+                    >
+                      Start Verification
+                    </button>
+                  </motion.div>
+                )}
+
+                {verificationState === 'scanning' && (
+                  <motion.div
+                    key="scanning"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <h1 className="text-purple-300 font-black text-2xl md:text-3xl mb-10 tracking-tight drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                      Proof of Stink Entry Scan System
+                    </h1>
+                    
+                    <div className="w-full bg-white/5 h-4 rounded-full overflow-hidden mb-4 p-[3px] border border-white/5">
+                      <motion.div 
+                        className="h-full bg-gradient-to-r from-[#7c3aed] to-[#a78bfa] rounded-full shadow-[0_0_15px_rgba(124,58,237,0.5)]"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${scanProgress}%` }}
+                      />
+                    </div>
+                    <p className="text-white font-bold text-sm mb-12">Scanning: {scanProgress}%</p>
+
+                    <div className="text-white font-black text-lg md:text-xl uppercase tracking-widest mb-12 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                      {scanText}
+                    </div>
+
+                    <div className="relative h-24 w-full bg-black/40 border border-white/5 rounded-2xl overflow-hidden">
+                      <motion.div 
+                        className="absolute w-full h-[2px] bg-purple-400/50 shadow-[0_0_15px_#a855f7] z-10"
+                        animate={{ top: ['0%', '100%', '0%'] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                      />
+                      <div className="flex flex-col gap-3 p-6 opacity-20">
+                        {[...Array(3)].map((_, i) => (
+                          <div key={i} className="h-2 w-full bg-purple-500/20 rounded-full" />
+                        ))}
+                      </div>
+                    </div>
+
+                    <p className="text-white/40 text-[10px] uppercase mt-10 tracking-widest font-bold">Do not close this window during verification</p>
+                  </motion.div>
+                )}
+
+                {verificationState === 'success' && (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  >
+                    <h1 className="text-purple-300 font-black text-2xl md:text-3xl mb-12 tracking-tight drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                      Proof of Stink Entry Scan System
+                    </h1>
+
+                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-green-500/30 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
+                      <motion.svg 
+                        className="w-12 h-12 text-green-500"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        initial={{ scale: 0, rotate: -20 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ type: 'spring', damping: 12 }}
+                      >
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </motion.svg>
+                    </div>
+
+                    <h2 className="text-green-500 font-black text-3xl mb-4 italic tracking-tight">REAL DEGEN DETECTED!</h2>
+                    <p className="text-white/60 text-[15px] leading-relaxed max-w-[300px] mx-auto">
+                      Proof-of-Stink Verification successful. Unlocking V2 Molecular Hyperbridge™...
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 2. Global Lyric Ticker (Bottom) - Only when playing */}
+      {/* Music Control Bar */}
       <AnimatePresence>
         {isPlaying && (
           <motion.div
@@ -165,30 +231,6 @@ export default function MusicPlayer() {
         )}
       </AnimatePresence>
 
-      {/* 3. Side Visualizer Bars */}
-      <AnimatePresence>
-        {isPlaying && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed left-6 bottom-20 z-[90] hidden lg:flex flex-col gap-1"
-          >
-            <div className="text-white/20 font-mono text-[8px] uppercase mb-2 vertical-text tracking-widest">Visualizer.exe</div>
-            <div className="flex items-end gap-1 h-32">
-              {[...Array(12)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-[3px] bg-saffron/40 rounded-full"
-                  animate={{ height: [10, Math.random() * 80 + 20, 10] }}
-                  transition={{ duration: 0.5 + Math.random(), repeat: Infinity, ease: "easeInOut" }}
-                />
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* 4. Persistent Play/Stop Toggle (Updated Design) */}
       <div className="fixed bottom-12 right-10 z-[100] flex items-center gap-4">
         <motion.button
           onClick={toggleMusic}
@@ -205,17 +247,11 @@ export default function MusicPlayer() {
               transition={{ duration: 1, repeat: Infinity }}
             />
           )}
-
           <div className="flex items-center justify-center relative z-10">
             {isPlaying ? (
               <div className="flex gap-1 h-4 items-end">
                 {[1, 2, 3].map(i => (
-                  <motion.div 
-                    key={i} 
-                    className="w-[3px] bg-black" 
-                    animate={{ height: [4, 16, 4] }}
-                    transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.1 }}
-                  />
+                  <motion.div key={i} className="w-[3px] bg-black" animate={{ height: [4, 16, 4] }} transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.1 }} />
                 ))}
               </div>
             ) : (
@@ -224,30 +260,6 @@ export default function MusicPlayer() {
           </div>
         </motion.button>
       </div>
-
-      {/* 5. Music-Reactive Background Pulse (Global) */}
-      <AnimatePresence>
-        {isPlaying && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.05 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 pointer-events-none z-[-1] bg-saffron"
-              style={{ mixBlendMode: 'overlay' }}
-            />
-            {/* Bass Pulse Effect */}
-            <motion.div
-              animate={{ 
-                opacity: [0, 0.02, 0],
-                scale: [1, 1.01, 1]
-              }}
-              transition={{ duration: 0.43, repeat: Infinity, ease: "easeInOut" }} // Approx 140 BPM (0.428s per beat)
-              className="fixed inset-0 border-[20px] border-saffron/10 pointer-events-none z-[1000]"
-            />
-          </>
-        )}
-      </AnimatePresence>
     </>
   )
 }
