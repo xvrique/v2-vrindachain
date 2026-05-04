@@ -23,92 +23,113 @@ export default function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-black">
-      {/* 1. Portal Background & Video */}
+      {/* 1. Enhanced Background & Video */}
       <BackgroundVideo />
 
-      {/* 2. Central Portal Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none">
-        <motion.div
-          className="absolute inset-0 bg-saffron/20 rounded-full blur-[120px]"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute inset-[15%] bg-india-green/10 rounded-full blur-[100px]"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.3, 0.1] }}
-          transition={{ duration: 5, repeat: Infinity }}
-        />
+      {/* 2. Tactical HUD Elements (Background Layer) */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] border border-white/5 rounded-full animate-spin-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-dashed border-white/5 rounded-full animate-reverse-spin-slow" />
+        
+        {/* Scanning Lines */}
+        <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(255,153,51,0.05)_50%,transparent_100%)] bg-[length:100%_4px] animate-scanline" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center text-center max-w-4xl">
+      <div className="relative z-10 flex flex-col items-center text-center max-w-6xl">
         
-        {/* 3. Main Logo (GIF) */}
+        {/* 3. Central Mascot Area with HUD Frame */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "backOut" }}
-          className="relative mb-8"
+          className="relative group mb-8"
         >
-          <img 
-            src="/vrindachain.gif" 
-            alt="Vrindachain AI" 
-            className="w-[300px] md:w-[450px] lg:w-[550px] h-auto drop-shadow-[0_0_60px_rgba(255,153,51,0.4)]"
-          />
+          {/* Intense Portal Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-saffron/20 rounded-full blur-[120px] animate-pulse" />
           
-          <motion.div 
-            className="absolute inset-0 pointer-events-none border-2 border-saffron/20 rounded-xl"
-            animate={{ scale: [1, 1.02, 1], opacity: [0, 0.5, 0] }}
-            transition={{ duration: 0.2, repeat: Infinity }}
-          />
+          {/* High-Tech Frame (The Podium) */}
+          <div className="absolute -inset-10 pointer-events-none">
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-saffron" />
+            <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-saffron" />
+            <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-india-green" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-india-green" />
+            
+            {/* Corner Labels */}
+            <span className="absolute top-0 left-0 -translate-y-full text-[10px] font-mono text-saffron tracking-[0.5em] pb-2">SCANNING_V2</span>
+            <span className="absolute bottom-0 right-0 translate-y-full text-[10px] font-mono text-india-green tracking-[0.5em] pt-2">CORE_ACTIVE</span>
+          </div>
+
+          {/* Main Logo (GIF) with filters to hide checkers */}
+          <div className="relative z-10 p-4">
+            <motion.img 
+              src="/vrindachain.gif" 
+              alt="Vrindachain AI" 
+              className="w-[350px] md:w-[550px] lg:w-[650px] h-auto contrast-150 brightness-110 drop-shadow-[0_0_100px_rgba(255,153,51,0.6)]"
+              animate={{ 
+                y: [0, -10, 0],
+                rotate: [-1, 1, -1]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            
+            {/* Blend Overlay - Trying to punch out the darks */}
+            <div className="absolute inset-0 bg-black/40 mix-blend-multiply pointer-events-none rounded-3xl" />
+          </div>
+
+          {/* Dynamic HUD Labels */}
+          <div className="absolute -right-24 top-1/4 hidden lg:flex flex-col items-start gap-4 text-left">
+            <div className="p-2 border-l-2 border-saffron bg-saffron/5">
+              <div className="text-[8px] font-mono text-saffron uppercase mb-1">Status</div>
+              <div className="text-xs font-black text-white uppercase tracking-wider">Operational</div>
+            </div>
+            <div className="p-2 border-l-2 border-india-green bg-india-green/5">
+              <div className="text-[8px] font-mono text-india-green uppercase mb-1">Threat</div>
+              <div className="text-xs font-black text-white uppercase tracking-wider">Low_Gutter</div>
+            </div>
+          </div>
         </motion.div>
 
-        {/* 4. Tagline */}
+        {/* 4. Tagline - More Aggressive */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
           className="mb-12"
         >
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black italic tracking-tighter text-india-green drop-shadow-[0_0_15px_rgba(19,136,8,0.5)]">
-            0 Second Smell Times™
+          <div className="inline-block px-4 py-1 bg-india-green text-black font-black text-[10px] uppercase tracking-[0.4em] mb-4">
+            Proprietary Stink-Tech Protocol
+          </div>
+          
+          <h2 className="text-5xl md:text-7xl lg:text-9xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-india-green to-peacock-green drop-shadow-[0_0_30px_rgba(19,136,8,0.4)] uppercase">
+            0 SECOND SMELL™
           </h2>
           
-          <div className="h-12 mt-6 relative overflow-hidden">
+          <div className="h-8 mt-6 relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.p 
                 key={narrativeIndex}
-                className="text-white/40 text-sm md:text-base font-mono uppercase tracking-[0.3em] absolute inset-0 flex items-center justify-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                className="text-white/40 text-sm md:text-base font-mono uppercase tracking-[0.3em] absolute inset-0 flex items-center justify-center italic"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4 }}
               >
-                {narratives[narrativeIndex]}
+                {">"} {narratives[narrativeIndex]}
               </motion.p>
             </AnimatePresence>
           </div>
         </motion.div>
 
-        {/* 5. Pill Buttons */}
-        <div className="flex flex-col gap-6 w-full max-w-xs">
+        {/* 5. Buttons - Solid & Bold */}
+        <div className="flex flex-col md:flex-row gap-8 w-full justify-center">
           <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="group relative px-10 py-5 rounded-full bg-black border-2 border-saffron/50 text-white font-black text-lg uppercase tracking-widest overflow-hidden transition-all hover:border-saffron hover:shadow-[0_0_30px_rgba(255,153,51,0.4)]"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="group relative px-14 py-6 bg-saffron text-black font-black text-xl uppercase tracking-widest transition-all hover:bg-white hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(255,153,51,0.3)]"
           >
-            <span className="relative z-10 group-hover:text-saffron transition-colors">Yeah, I'm Finna Bridge</span>
+            Yeah, I'm Finna Bridge
           </motion.button>
 
           <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="group px-10 py-4 rounded-full border border-india-green/30 text-india-green font-black text-sm uppercase tracking-widest hover:bg-india-green hover:text-black transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="group px-14 py-6 border-2 border-white/20 text-white font-black text-sm uppercase tracking-widest hover:border-india-green hover:bg-india-green/10 transition-all hover:scale-105 active:scale-95"
           >
             Read Stinkpaper
           </motion.button>
@@ -116,14 +137,23 @@ export default function Hero() {
 
       </div>
 
-      {/* 6. Corner Data Decals */}
-      <div className="absolute bottom-8 left-8 text-white/10 font-mono text-[10px] uppercase tracking-[0.3em] hidden md:block">
-        Latency: 0ms<br />
-        Nodes: Active
-      </div>
-      <div className="absolute bottom-8 right-8 text-white/10 font-mono text-[10px] text-right uppercase tracking-[0.3em] hidden md:block">
-        Uptime: 99.9%<br />
-        Status: Critical
+      {/* 6. System Telemetry (Corners) */}
+      <div className="absolute bottom-10 left-10 hidden xl:block">
+        <div className="text-saffron font-black text-[10px] tracking-[0.5em] mb-4">SYSTEM_TELEMETRY</div>
+        <div className="space-y-2">
+          {[1,2,3].map(i => (
+            <div key={i} className="flex gap-2 items-center">
+              <div className="w-20 h-[2px] bg-white/5 overflow-hidden">
+                <motion.div 
+                  className="h-full bg-saffron" 
+                  animate={{ width: ['0%', '100%', '0%'] }}
+                  transition={{ duration: 2 + i, repeat: Infinity }}
+                />
+              </div>
+              <span className="text-[8px] font-mono text-white/20">PROC_{i}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
