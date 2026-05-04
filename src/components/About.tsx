@@ -40,7 +40,6 @@ export default function About() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saffron via-white to-india-green"></div>
           
           <p className="text-2xl md:text-3xl font-black text-white mb-6 tracking-tight">
             "Born from the sacred chaos of back alleys, delivering the smelliest scaling solution in crypto."

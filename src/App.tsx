@@ -9,7 +9,6 @@ import Footer from './components/Footer'
 import KonamiCode from './components/KonamiCode'
 import CursorTrail from './components/CursorTrail'
 import InteractiveCow from './components/InteractiveCow'
-import FlyingMonkey from './components/FlyingMonkey'
 import BackgroundVideo from './components/BackgroundVideo'
 import MusicPlayer from './components/MusicPlayer'
 
@@ -33,7 +32,6 @@ function App() {
       <KonamiCode />
       {/* <CursorTrail /> */}
       <InteractiveCow />
-      <FlyingMonkey />
       
       {/* Main content */}
       <div className="relative z-10">

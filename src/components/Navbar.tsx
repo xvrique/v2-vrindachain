@@ -21,12 +21,12 @@ export default function Navbar({ scrollY }: NavbarProps) {
   return (
     <>
       <motion.nav
-        className="fixed top-0 w-full z-[100] transition-all duration-500 bg-black/95 backdrop-blur-xl border-b border-white/5"
+        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrollY > 50 ? 'bg-black/95 backdrop-blur-xl' : 'bg-transparent'}`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
       >
         {/* Ticker Bar - Compact */}
-        <div className="bg-saffron h-6 flex items-center overflow-hidden border-b border-black">
+        <div className="bg-saffron h-6 flex items-center overflow-hidden">
           <div className="flex whitespace-nowrap animate-ticker items-center">
             {[...Array(10)].map((_, i) => (
               <span key={i} className="text-[9px] font-black uppercase text-black mx-10 tracking-[0.1em]">

@@ -10,16 +10,18 @@ export default function BackgroundVideo() {
         loop
         playsInline
         preload="auto"
-        className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       >
         <source src="/bg_nomusic.mp4" type="video/mp4" />
       </video>
 
       {/* 2. Degen Overlays (Atmosphere) */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {/* Dark Gradients to keep content readable */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
-        <div className="absolute inset-0 bg-black/60" />
+        {/* Uniform dark overlay for readability without sharp transitions */}
+        <div className="absolute inset-0 bg-black/65" />
+        
+        {/* Subtle radial vignette to soften edges */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
         
         <div className="absolute inset-0 bg-saffron/5 mix-blend-color" />
       </div>
