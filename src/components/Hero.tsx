@@ -93,7 +93,7 @@ export default function Hero() {
             0 Second Smell Times™
           </h2>
           
-          <div className="h-12 md:h-16 relative overflow-hidden">
+          <div className="h-24 md:h-32 relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.p 
                 key={narrativeIndex}
