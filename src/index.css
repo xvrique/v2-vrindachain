@@ -270,6 +270,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Rubik Glitch', cursive;
 }
 
+.font-exclusive {
+  font-family: 'Cinzel', serif;
+}
+
+.font-tech {
+  font-family: 'Syncopate', sans-serif;
+}
+
 .font-body {
   font-family: 'Space Grotesk', sans-serif;
 }

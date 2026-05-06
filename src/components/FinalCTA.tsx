@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
+import SmokeEffect from './SmokeEffect'
 
-export default function FinalCTA() {
+export default function FinalCTA({ onValidate }: { onValidate?: () => void }) {
   return (
-    <section className="relative py-32 px-4 bg-transparent">
-
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+    <section id="final-cta" className="relative pt-4 pb-20 px-4 bg-transparent overflow-hidden">
+      <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -12,12 +12,14 @@ export default function FinalCTA() {
           viewport={{ once: true }}
         >
           {/* Headline */}
-          <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-saffron to-india-green bg-clip-text text-transparent">
-            Ready to Scale the Stink?
-          </motion.h2>
+          <SmokeEffect density={15}>
+            <motion.h2 className="text-2xl md:text-4xl font-black mb-6 bg-gradient-to-r from-saffron via-white to-india-green bg-clip-text text-transparent uppercase tracking-tighter drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+              Ready to Scale the Stink?
+            </motion.h2>
+          </SmokeEffect>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-white/50 mb-10 max-w-xl mx-auto leading-relaxed">
             Join the monkey army. Validate with cows. Enter the gutter.
           </p>
 
@@ -31,32 +33,31 @@ export default function FinalCTA() {
           >
             {/* Primary Button */}
             <motion.button
-              className="px-8 py-4 rounded-full font-bold text-lg text-white relative overflow-hidden group min-w-[200px]"
+              className="px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest text-white relative overflow-hidden group min-w-[180px] rough-border border-saffron/50 text-saffron"
               style={{
                 background: 'transparent',
-                border: '2px solid #ff9933',
-                color: '#ff9933',
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 backgroundColor: 'rgba(255, 153, 51, 0.1)',
+                borderColor: '#ff9933',
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={onValidate}
             >
-              <span className="relative z-10">Launch App</span>
+              <span className="relative z-10">Buy $V2 now →</span>
             </motion.button>
 
             {/* Secondary Button */}
             <motion.button
-              className="px-8 py-4 rounded-full font-bold text-lg relative overflow-hidden group min-w-[200px]"
+              className="px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest text-white relative overflow-hidden group min-w-[180px] rough-border border-india-green/50 text-india-green"
               style={{
                 background: 'transparent',
-                border: '2px solid #138808',
-                color: '#138808',
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 backgroundColor: 'rgba(19, 136, 8, 0.1)',
+                borderColor: '#138808',
               }}
               whileTap={{ scale: 0.95 }}
             >

@@ -27,9 +27,9 @@ export default function WhyVrindachain() {
     <section className="relative py-24 px-4 bg-transparent">
       {/* Radial gradient background */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle at center, rgba(255, 153, 51, 0.1) 0%, transparent 70%)',
         }}
       />
 
@@ -41,14 +41,7 @@ export default function WhyVrindachain() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 
-            className="text-5xl md:text-6xl font-black mb-6"
-            style={{
-              background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <h2 className="text-3xl md:text-6xl font-black mb-6 bg-gradient-to-r from-saffron to-india-green bg-clip-text text-transparent uppercase tracking-tighter">
             Why Vrindachain?
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
@@ -60,7 +53,7 @@ export default function WhyVrindachain() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 hover:border-purple-500/50 transition-all duration-300"
+              className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-saffron/30 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -69,14 +62,7 @@ export default function WhyVrindachain() {
             >
               <div className="text-5xl mb-6">{feature.emoji}</div>
               
-              <h3 
-                className="text-2xl font-bold mb-4"
-                style={{
-                  background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
+              <h3 className="text-2xl font-black mb-4 text-saffron uppercase tracking-tight">
                 {feature.title}
               </h3>
 

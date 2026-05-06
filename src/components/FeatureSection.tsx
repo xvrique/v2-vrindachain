@@ -1,61 +1,65 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import SmokeEffect from './SmokeEffect'
 
-export default function FeatureSection() {
+export default function FeatureSection({ onValidate }: { onValidate?: () => void }) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <section className="relative py-32 px-4 bg-transparent overflow-hidden stink-haze">
-      <div className="max-w-4xl mx-auto text-center relative z-20">
+    <section className="relative py-16 md:py-20 px-4 bg-transparent overflow-hidden">
+      <div className="max-w-2xl mx-auto text-center relative z-20">
         {/* Main Feature Content (No Frame) */}
         <motion.div
-          className="relative py-12 md:py-20"
+          className="relative py-8 md:py-12"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           {/* Badge */}
-          <div className="absolute top-0 right-0 stamp -translate-y-1/2 translate-x-1/4 rotate-12 bg-india-green/20 border-india-green/40 text-india-green text-xs font-black">
+          <div className="absolute -top-4 right-0 stamp -translate-y-1/2 translate-x-1/4 rotate-12 bg-india-green/20 border-india-green/40 text-india-green text-[10px] font-black">
             PATENT PENDING
           </div>
 
-          <motion.h2 
-            className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r from-saffron via-white to-india-green bg-clip-text text-transparent drop-shadow-lg"
-          >
-            COW PROOF-OF-STINK™
-          </motion.h2>
+          <SmokeEffect density={20}>
+            <motion.h2
+              className="text-2xl md:text-4xl font-black mb-6 bg-gradient-to-r from-saffron via-white to-india-green bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,0,0,0.8)] uppercase tracking-tighter"
+            >
+              COW PROOF-OF-STINK™
+            </motion.h2>
+          </SmokeEffect>
 
-          <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
-            Revolutionary consensus mechanism that validates transactions based on <span className="text-saffron">stink level</span> and <span className="text-india-green">cow conviction</span>. 
+          <p className="text-base md:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed">
+            Revolutionary consensus mechanism that validates transactions based on <span className="text-saffron font-bold">stink level</span> and <span className="text-india-green font-bold">cow conviction</span>.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-10">
             {[
               { label: 'Latency', value: '1 Cow Lick' },
               { label: 'Throughput', value: 'Infinite Moo' },
               { label: 'Security', value: 'Bovine-Grade' },
             ].map((stat, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
-                className="bg-white/5 p-4 rough-border border-white/10"
-                whileHover={{ y: -5, borderColor: 'rgba(255,153,51,0.3)' }}
+                className="bg-white/5 p-2 rough-border border-white/10"
+                whileHover={{ y: -3, borderColor: 'rgba(255,153,51,0.2)' }}
               >
-                <div className="text-xs uppercase tracking-widest text-white/40 mb-1">{stat.label}</div>
-                <div className="text-lg font-bold text-white">{stat.value}</div>
+                <div className="text-[9px] uppercase tracking-[0.2em] text-white/30 mb-0.5">{stat.label}</div>
+                <div className="text-[11px] md:text-xs font-black text-white uppercase">{stat.value}</div>
               </motion.div>
             ))}
           </div>
 
           <motion.button
-            className="px-10 py-5 rounded-2xl font-black text-xl text-white relative overflow-hidden bg-gradient-to-r from-saffron to-india-green group rough-border"
+            className="px-6 py-2.5 rounded-full font-black text-sm text-white relative overflow-hidden bg-gradient-to-r from-saffron to-india-green group rough-border shadow-[0_0_30px_rgba(255,153,51,0.2)]"
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={onValidate}
           >
             <span className="relative z-10 flex items-center gap-3">
-              Validate with Cows <motion.span animate={{ x: isHovered ? 5 : 0 }}>→</motion.span>
+              Validate with Cows <motion.span animate={{ x: isHovered ? 5 : 0 }}></motion.span>
             </span>
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-india-green to-saffron"

@@ -37,9 +37,9 @@ export default function Community() {
     <section id="community" className="relative py-24 px-4 bg-transparent">
       {/* Radial gradient background */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle at center, rgba(255, 153, 51, 0.1) 0%, transparent 70%)',
         }}
       />
 
@@ -51,14 +51,7 @@ export default function Community() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 
-            className="text-5xl md:text-6xl font-black mb-4"
-            style={{
-              background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <h2 className="text-3xl md:text-6xl font-black mb-4 bg-gradient-to-r from-saffron to-india-green bg-clip-text text-transparent uppercase tracking-tighter">
             Join the Kirtan
           </h2>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -74,7 +67,7 @@ export default function Community() {
             <motion.a
               key={index}
               href={link.href}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 hover:border-purple-500/50 transition-all duration-300 flex flex-col items-center text-center cursor-pointer"
+              className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-india-green/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -83,14 +76,7 @@ export default function Community() {
             >
               <div className="text-5xl mb-6">{link.emoji}</div>
 
-              <h3 
-                className="text-2xl font-bold mb-2"
-                style={{
-                  background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
+              <h3 className="text-2xl font-black mb-2 text-india-green uppercase tracking-tight">
                 {link.title}
               </h3>
 
@@ -98,7 +84,7 @@ export default function Community() {
                 {link.description}
               </p>
 
-              <div className="mt-auto text-purple-400 font-bold text-lg">
+              <div className="mt-auto text-india-green font-black text-xl">
                 →
               </div>
             </motion.a>

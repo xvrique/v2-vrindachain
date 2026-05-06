@@ -15,9 +15,9 @@ export default function Tokenomics() {
     <section id="tokenomics" className="relative py-24 px-4 bg-transparent">
       {/* Radial gradient background */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle at center, rgba(255, 153, 51, 0.1) 0%, transparent 70%)',
         }}
       />
 
@@ -29,14 +29,7 @@ export default function Tokenomics() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 
-            className="text-5xl md:text-6xl font-black mb-6"
-            style={{
-              background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <h2 className="text-3xl md:text-6xl font-black mb-6 bg-gradient-to-r from-saffron to-india-green bg-clip-text text-transparent uppercase tracking-tighter">
             $V2 Tokenomics
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
@@ -47,7 +40,7 @@ export default function Tokenomics() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Chart */}
           <motion.div
-            className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 flex items-center justify-center"
+            className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -77,7 +70,7 @@ export default function Tokenomics() {
             {tokenomicsData.map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-purple-500/30 hover:border-purple-500/50 transition-all duration-300"
+                className="bg-white/[0.03] backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-saffron/30 transition-all duration-300"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
@@ -108,20 +101,13 @@ export default function Tokenomics() {
 
         {/* Token Details */}
         <motion.div
-          className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-purple-500/30"
+          className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 
-            className="text-3xl font-bold mb-8"
-            style={{
-              background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <h3 className="text-3xl font-black mb-8 text-saffron uppercase tracking-tight">
             Token Details
           </h3>
           <div className="grid md:grid-cols-3 gap-8">

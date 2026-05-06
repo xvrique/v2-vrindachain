@@ -1,15 +1,15 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-export default function Hero() {
+export default function Hero({ onValidate }: { onValidate?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [narrativeIndex, setNarrativeIndex] = useState(0)
 
   const narratives = [
-    "Liquidity pulled straight from the gutters of Banke Bihari.",
-    "0% Tax, 100% Smell. Proprietary Stink-Tech™ inside.",
-    "Rickshaw Rollups: Scaling the chaos of Vrindavan to L2.",
-    "Bovine Consensus: Our nodes are literally holy cows.",
-    "The first AI that can actually smell your fear (and your bags)."
+    "Liquidity pulled straight from the gutters of Banke Bihari",
+    "0% Tax, 100% Smell Proprietary Stink-Tech™ inside",
+    "Rickshaw Rollups Scaling the chaos of Vrindavan to L2",
+    "Bovine Consensus Our nodes are literally holy cows.",
+    "The first AI that can actually smell your fear (and your bags)"
   ]
 
   useEffect(() => {
@@ -21,8 +21,8 @@ export default function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
-        
+      <div className="relative z-10 flex flex-col items-center text-center max-w-4xl w-full">
+
         {/* 2. Central Mascot Area (Clean & No Oval) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -30,51 +30,58 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="relative mb-6"
         >
-          
+          {/* Billowing Fart Clouds Effect behind GIF */}
+          <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className={`absolute rounded-full blur-[60px] ${
+                  i % 2 === 0 ? 'bg-[#138808]/30' : 'bg-[#22c55e]/20'
+                }`}
+                style={{
+                  width: i % 2 === 0 ? '250px' : '180px',
+                  height: i % 2 === 0 ? '250px' : '180px',
+                }}
+                animate={{
+                  x: [
+                    `${(Math.sin(i) * 100)}px`,
+                    `${(Math.cos(i) * 150)}px`,
+                    `${(Math.sin(i + 2) * 100)}px`
+                  ],
+                  y: [
+                    `${(Math.cos(i) * 100)}px`,
+                    `${(Math.sin(i) * 150)}px`,
+                    `${(Math.cos(i + 2) * 100)}px`
+                  ],
+                  scale: [1, 1.8, 1.2, 2.2, 1],
+                  opacity: [0.1, 0.4, 0.2, 0.5, 0.1],
+                }}
+                transition={{
+                  duration: 8 + (i * 2),
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+            ))}
+            {/* Core Stink Glow */}
+            <div className="absolute w-[300px] h-[300px] bg-india-green/10 rounded-full blur-[80px] animate-pulse" />
+          </div>
+
           <div className="relative z-10">
-            {/* ⚡ Mega Purple Lightning (Background) */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 opacity-80 pointer-events-none"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ 
-                scale: [1, 1.05, 1],
-                opacity: [0.6, 1, 0.6],
-                filter: [
-                  "drop-shadow(0 0 20px #a855f7)",
-                  "drop-shadow(0 0 60px #d946ef)",
-                  "drop-shadow(0 0 20px #a855f7)"
-                ]
-              }}
-              transition={{ duration: 0.1, repeat: Infinity, repeatType: "mirror" }}
-            >
-              {/* Central Lightning Bolt Shape */}
-              <svg viewBox="0 0 100 100" className="w-full h-full fill-white/20">
-                <path d="M60 10 L30 50 L50 50 L40 90 L70 50 L50 50 Z" className="fill-purple-500/40 blur-[2px]" />
-                <path d="M60 10 L30 50 L50 50 L40 90 L70 50 L50 50 Z" className="fill-white blur-[1px]" />
-              </svg>
-            </motion.div>
-
-            {/* Floating Glow Sphere (Purple) */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-600/30 rounded-full blur-[100px] z-0"
-              animate={{ scale: [1, 1.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-
-            <motion.img 
-              src="/vrindachain.gif" 
-              alt="Vrindachain AI" 
-              className="w-[280px] md:w-[360px] h-auto contrast-[1.8] brightness-[1.1] mix-blend-lighten relative z-10"
+            <motion.img
+              src="/vrindachain.gif"
+              alt="Vrindachain AI"
+              className="w-[380px] md:w-[520px] h-auto contrast-[1.8] brightness-[1.1] mix-blend-lighten relative z-10"
               style={{ filter: 'url(#chroma-key-gray)' }}
-              animate={{ 
-                y: [0, -6, 0],
+              animate={{
+                y: [0, -10, 0],
                 filter: [
-                  'drop-shadow(0 0 30px rgba(168,85,247,0.4)) url(#chroma-key-gray)',
-                  'drop-shadow(0 0 80px rgba(217,70,239,0.8)) url(#chroma-key-gray)',
-                  'drop-shadow(0 0 30px rgba(168,85,247,0.4)) url(#chroma-key-gray)'
+                  'drop-shadow(0 0 40px rgba(255,153,51,0.5)) url(#chroma-key-gray)',
+                  'drop-shadow(0 0 100px rgba(255,153,51,0.9)) url(#chroma-key-gray)',
+                  'drop-shadow(0 0 40px rgba(255,153,51,0.5)) url(#chroma-key-gray)'
                 ]
               }}
-              transition={{ 
+              transition={{
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                 filter: { duration: 0.15, repeat: Infinity, repeatType: "mirror" }
               }}
@@ -87,20 +94,22 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mb-8"
+          className="mb-8 w-full"
         >
-          <h2 className="text-2xl md:text-3xl font-black tracking-tight text-india-green drop-shadow-[0_0_10px_rgba(19,136,8,0.3)] uppercase mb-4">
-            0 Second Smell Times™
+          <h2 className="text-base md:text-3xl font-exclusive font-black tracking-[0.1em] md:tracking-[0.2em] text-saffron drop-shadow-[0_0_20px_rgba(255,153,51,0.6)] uppercase mb-6 flex items-center justify-center gap-2 md:gap-4">
+            <span className="hidden md:block h-[1px] w-12 bg-gradient-to-r from-transparent to-saffron/40"></span>
+            STINK CRITICAL™
+            <span className="hidden md:block h-[1px] w-12 bg-gradient-to-l from-transparent to-saffron/40"></span>
           </h2>
-          
-          <div className="h-24 md:h-32 relative overflow-hidden">
+
+          <div className="min-h-[5rem] md:min-h-[6rem] relative flex items-center justify-center">
             <AnimatePresence mode="wait">
-              <motion.p 
+              <motion.p
                 key={narrativeIndex}
-                className="text-lg md:text-2xl font-black tracking-tight text-india-green drop-shadow-[0_0_10px_rgba(19,136,8,0.3)] uppercase absolute inset-0 flex items-center justify-center italic"
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                className="text-base md:text-xl font-heading tracking-tight text-india-green drop-shadow-[0_0_10px_rgba(19,136,8,0.3)] uppercase relative w-full text-center px-4"
+                initial={{ opacity: 0, scale: 0.9, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 1.2, y: -10 }}
+                exit={{ opacity: 0, scale: 1.1, y: -10 }}
                 transition={{ duration: 0.5, ease: "backOut" }}
               >
                 {narratives[narrativeIndex]}
@@ -115,6 +124,7 @@ export default function Hero() {
             className="group relative px-8 py-3 rounded-full bg-black border border-saffron/50 text-saffron font-bold text-sm uppercase tracking-widest transition-all hover:bg-saffron hover:text-black hover:shadow-[0_0_20px_rgba(255,153,51,0.3)]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={onValidate}
           >
             Yeah, I'm Finna Bridge
           </motion.button>
@@ -138,12 +148,12 @@ export default function Hero() {
       {/* Refined SVG Filter for Absolute Transparency */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <filter id="chroma-key-gray">
-          <feColorMatrix 
-            type="matrix" 
+          <feColorMatrix
+            type="matrix"
             values="1 0 0 0 0
                     0 1 0 0 0
                     0 0 1 0 0
-                    -15 -15 -15 25 0" 
+                    -15 -15 -15 25 0"
           />
         </filter>
       </svg>

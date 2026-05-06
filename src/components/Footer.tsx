@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 
 export default function Footer() {
   const footerLinks = [
-    { label: 'Technology', href: '#technology' },
-    { label: 'Tokenomics', href: '#tokenomics' },
-    { label: 'Roadmap', href: '#roadmap' },
-    { label: 'Community', href: '#community' },
+    { label: 'HOW TO BUY', href: '#how-to-buy' },
+    { label: 'SWAP', href: 'https://jup.ag', external: true },
+    { label: 'Vrindachain?', href: '#about' },
+    { label: 'CHART', href: 'https://dexscreener.com', external: true },
+    { label: 'JOIN', href: '#final-cta' },
+    { label: 'SOCIALS', href: 'https://x.com/xvrique', external: true },
   ]
 
   return (
@@ -20,23 +22,25 @@ export default function Footer() {
         >
           {/* Brand */}
           <div>
-            <h3 className="text-3xl font-black gradient-text mb-4">
-              🐄 Vrindachain
+            <h3 className="text-3xl font-exclusive font-black text-saffron mb-4 uppercase tracking-tighter">
+              Vrindachain
             </h3>
-            <p className="text-cream/70 leading-relaxed">
+            <p className="text-white/50 leading-relaxed text-sm">
               The first AI-powered Layer 2 born from gutter liquidity, cow validators, and monkey security. Scale the stink.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="text-lg font-bold text-cream mb-6">Navigation</h4>
+            <h4 className="text-sm font-black text-white mb-6 uppercase tracking-widest">Navigation</h4>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-cream/70 hover:text-saffron transition-colors font-semibold"
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    className="text-white/40 hover:text-saffron transition-colors text-xs font-black uppercase tracking-tight"
                   >
                     {link.label}
                   </a>
@@ -47,12 +51,12 @@ export default function Footer() {
 
           {/* Stats */}
           <div>
-            <h4 className="text-lg font-bold text-cream mb-6">Network Stats</h4>
-            <div className="space-y-3 text-cream/70">
-              <p className="font-semibold">TPS: <span className="text-saffron">10,000</span></p>
-              <p className="font-semibold">Hygiene: <span className="text-saffron">0</span></p>
-              <p className="font-semibold">Chaos: <span className="text-saffron">Infinite</span></p>
-              <p className="font-semibold">Status: <span className="text-peacock-green">🟢 Smelly</span></p>
+            <h4 className="text-sm font-black text-white mb-6 uppercase tracking-widest">Network Stats</h4>
+            <div className="space-y-3 text-white/40 text-xs font-black uppercase tracking-tight">
+              <p>TPS: <span className="text-saffron">10,000</span></p>
+              <p>Hygiene: <span className="text-saffron">ABSOULTELY ZER0</span></p>
+              <p>Chaos: <span className="text-saffron">Infinite</span></p>
+              <p>Status: <span className="text-india-green">True Smelly</span></p>
             </div>
           </div>
         </motion.div>
@@ -60,26 +64,15 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <motion.div
-          className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10"
+          className="flex flex-col items-center pt-8 border-t border-white/5"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className="text-cream/50 text-sm font-semibold">
-            © 2024 Vrindachain. Built different. Smells worse. 🐄
+          <p className="text-white/30 text-[10px] font-black uppercase tracking-widest text-center">
+            © 2026 Vrindachain. Built different. Stinks More. Smells worse.
           </p>
-          <div className="flex gap-6 mt-6 md:mt-0">
-            <a href="#" className="text-cream/50 hover:text-saffron transition-colors text-sm font-semibold">
-              Privacy
-            </a>
-            <a href="#" className="text-cream/50 hover:text-saffron transition-colors text-sm font-semibold">
-              Terms
-            </a>
-            <a href="#" className="text-cream/50 hover:text-saffron transition-colors text-sm font-semibold">
-              Contact
-            </a>
-          </div>
         </motion.div>
       </div>
     </footer>

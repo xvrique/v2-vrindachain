@@ -1,11 +1,22 @@
 import { motion } from 'framer-motion'
+import { useRef, useEffect } from 'react'
 
-export default function BackgroundVideo() {
+export default function BackgroundVideo({ isEntered }: { isEntered?: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (isEntered && videoRef.current) {
+      videoRef.current.play().catch(console.error);
+    } else if (!isEntered && videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [isEntered]);
+
   return (
     <div className="fixed inset-0 z-0 w-full h-full overflow-hidden bg-black pointer-events-none">
       {/* 1. The Video Background - Locked to Viewport */}
       <video
-        autoPlay
+        ref={videoRef}
         muted
         loop
         playsInline
