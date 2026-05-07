@@ -129,13 +129,16 @@ export default function Hero({ onValidate }: { onValidate?: () => void }) {
             Yeah, I'm Finna Bridge
           </motion.button>
 
-          <motion.button
-            className="group px-8 py-2.5 rounded-full border border-india-green/30 text-india-green/60 font-bold text-[10px] uppercase tracking-widest hover:border-india-green hover:text-india-green transition-all"
+          <motion.a
+            href="/stinkpaper.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group px-8 py-2.5 rounded-full border border-india-green/30 text-india-green/60 font-bold text-[10px] uppercase tracking-widest hover:border-india-green hover:text-india-green transition-all flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Read Stinkpaper
-          </motion.button>
+          </motion.a>
         </div>
 
       </div>
