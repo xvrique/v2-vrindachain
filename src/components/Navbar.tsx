@@ -15,7 +15,7 @@ export default function Navbar({ scrollY }: NavbarProps) {
     { label: 'Vrindachain?', href: '#about' },
     { label: 'CHART', href: 'https://dexscreener.com', external: true },
     { label: 'JOIN', href: '#final-cta' },
-    { label: 'SOCIALS', href: 'https://x.com/xvrique', external: true },
+    { label: 'SOCIALS', href: 'https://x.com/vrindachainL2', external: true },
   ]
 
   return (
@@ -90,9 +90,9 @@ export default function Navbar({ scrollY }: NavbarProps) {
               exit={{ opacity: 0, height: 0 }}
             >
               {navLinks.map((link) => (
-                <a 
-                  key={link.label} 
-                  href={link.href} 
+                <a
+                  key={link.label}
+                  href={link.href}
                   onClick={() => setIsOpen(false)}
                   className="text-white/80 hover:text-saffron font-exclusive font-black text-base uppercase tracking-widest transition-colors py-1"
                 >

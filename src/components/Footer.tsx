@@ -7,7 +7,7 @@ export default function Footer() {
     { label: 'Vrindachain?', href: '#about' },
     { label: 'CHART', href: 'https://dexscreener.com', external: true },
     { label: 'JOIN', href: '#final-cta' },
-    { label: 'SOCIALS', href: 'https://x.com/xvrique', external: true },
+    { label: 'SOCIALS', href: 'https://x.com/vrindachainL2', external: true },
   ]
 
   return (
