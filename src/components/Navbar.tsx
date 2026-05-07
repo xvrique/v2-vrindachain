@@ -30,7 +30,7 @@ export default function Navbar({ scrollY }: NavbarProps) {
           <div className="flex whitespace-nowrap animate-ticker items-center">
             {[...Array(10)].map((_, i) => (
               <span key={i} className="text-[9px] font-black uppercase text-black mx-10 tracking-[0.1em]">
-                PRICE: $0.00001840 — MC: $97,226 — STINK: <span className="text-white">CRITICAL</span> — CA: $f4ju...pump
+                - <span className="text-white">CRITICAL</span> —
               </span>
             ))}
           </div>
