@@ -4,12 +4,12 @@ A premium, responsive landing page for Vrindachain, a fictional meme crypto / AI
 
 ## Features
 
-✨ **Fully Responsive Design** - Mobile, tablet, and desktop optimized
-🎨 **Premium Visual Design** - Glassmorphism, gradient borders, glowing effects
-⚡ **Smooth Animations** - Framer Motion animations throughout
-🎭 **Meme Crypto Aesthetic** - Bold hero, fake tech specs, tokenomics, roadmap
-🙏 **Spiritual Theme** - Krishna/Vrindavan-inspired with peacock, flute, lotus, mandala motifs
-🎵 **Interactive Elements** - Hover effects, floating particles, smooth scrolling
+**Fully Responsive Design** - Mobile, tablet, and desktop optimized
+**Premium Visual Design** - Glassmorphism, gradient borders, glowing effects
+**Smooth Animations** - Framer Motion animations throughout
+**Meme Crypto Aesthetic** - Bold hero, fake tech specs, tokenomics, roadmap
+**Spiritual Theme** - Krishna/Vrindavan-inspired with peacock, flute, lotus, mandala motifs
+**Interactive Elements** - Hover effects, floating particles, smooth scrolling
 
 ## Tech Stack
 
