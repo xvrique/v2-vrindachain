@@ -22,7 +22,7 @@ export default function HowToBuy() {
       badge: '/htb-section3.png',
       title: 'Swap for $V2',
       description: 'Head to Jupiter, Raydium, or any DEX that accepts gutter liquidity. Paste the $V2 token address and swap your SOL.',
-      contractNote: 'Token Address: Bb3TNUHP6btcG2QV5Aft83rnUt1ACGAD7CWPQLmnpump',
+      contractNote: 'Token Address: UPCOMING',
       color: 'from-saffron-dark to-india-green',
     },
     {

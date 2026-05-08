@@ -30,7 +30,7 @@ export default function Navbar({ scrollY }: NavbarProps) {
           <div className="flex whitespace-nowrap animate-ticker items-center">
             {[...Array(10)].map((_, i) => (
               <span key={i} className="text-[9px] font-black uppercase text-black mx-10 tracking-[0.1em]">
-                — STINK: <span className="text-white">CRITICAL</span> — CA: Bb3TNUHP6btcG2QV5Aft83rnUt1ACGAD7CWPQLmnpump
+                — STINK: <span className="text-white">CRITICAL</span> — CA: UPCOMING
               </span>
             ))}
           </div>
