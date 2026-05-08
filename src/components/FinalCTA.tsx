@@ -32,8 +32,11 @@ export default function FinalCTA({ onValidate }: { onValidate?: () => void }) {
             viewport={{ once: true }}
           >
             {/* Primary Button */}
-            <motion.button
-              className="px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest text-white relative overflow-hidden group min-w-[180px] rough-border border-saffron/50 text-saffron"
+            <motion.a
+              href="https://jup.ag/swap/SOL-Bb3TNUHP6btcG2QV5Aft83rnUt1ACGAD7CWPQLmnpump"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest text-white relative overflow-hidden group min-w-[180px] rough-border border-saffron/50 text-saffron flex items-center justify-center"
               style={{
                 background: 'transparent',
               }}
@@ -43,10 +46,9 @@ export default function FinalCTA({ onValidate }: { onValidate?: () => void }) {
                 borderColor: '#ff9933',
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={onValidate}
             >
               <span className="relative z-10">Buy $V2 now →</span>
-            </motion.button>
+            </motion.a>
 
             {/* Secondary Button */}
             <motion.button
