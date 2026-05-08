@@ -120,16 +120,14 @@ export default function Hero({ onValidate }: { onValidate?: () => void }) {
 
         {/* 4. Action Buttons (Pill-shaped) */}
         <div className="flex flex-col gap-3 w-full max-w-[260px]">
-          <motion.a
-            href="https://jup.ag/swap/SOL-s73AxfoVSh8GTbCkbMtCdPHb3nnTxQiDbktLnLNpump"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative px-8 py-3 rounded-full bg-black border border-saffron/50 text-saffron font-bold text-sm uppercase tracking-widest transition-all hover:bg-saffron hover:text-black hover:shadow-[0_0_20px_rgba(255,153,51,0.3)] flex items-center justify-center"
+          <motion.button
+            className="group relative px-8 py-3 rounded-full bg-black border border-saffron/50 text-saffron font-bold text-sm uppercase tracking-widest transition-all hover:bg-saffron hover:text-black hover:shadow-[0_0_20px_rgba(255,153,51,0.3)]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={onValidate}
           >
             Yeah, I'm Finna Bridge
-          </motion.a>
+          </motion.button>
 
           <motion.a
             href="/stinkpaper.pdf"
